@@ -3,11 +3,12 @@ Este é apenas um projeto de teste que se aproxima do ambiente real de frontend 
 
 ## Instruções
 
-O DEV deverá criar um `fork` deste projeto, e desenvolver em cima do seu fork. Use um documento `*.md` no repositório para informar as decisões tomadas, como você organizou e separou seu código, e principalmente as instruções de como executar seu projeto.
+O DEV deverá criar um `fork` deste projeto, e desenvolver em cima do seu fork. 
+Use um documento `*.md` no repositório para informar as decisões tomadas, como você organizou e separou seu código, e principalmente as instruções de como executar seu projeto.
 
 - O desenvolvedor está livre para modificar absolutamente quaquer coisa que julgar necessário. 
 - Não é obrigatório para o teste completar todas as tarefas, pode ser feito em partes *(se quiser, é claro)*.
-- É importante fazer um relárorio simples em `*.md` do que foi feito, e o tempo utilizado.
+- É importante fazer um relatório simples em `*.md` do que foi feito, e o tempo utilizado.
 
 ## Objetivo
 
@@ -29,7 +30,7 @@ Os principais objetivos deste teste é avaliar as seguintes caracteristicas:
 ### 1. Ambiente de desenvolvimento
 
 - [ ] Configurar projeto para rodar com `typescript`
-- [ ] Atualizar dependênicas que não prejudiquem o funcionamento do projeto
+- [ ] Atualizar dependências que não prejudiquem o funcionamento do projeto
 - [ ] Configurar, iniciar e utilizar o projeto com `git flow` (conceitos básicos)
 - [ ] Reorganizar estrutura de pastas do projeto, apenas se achar necesário
 - [ ] Configuração padronização de código `eslint`
@@ -76,7 +77,7 @@ Serão utilizadas muitas tabelas de dados no sistema, então para:
 - [ ] A Tabela deve receber um Tema como propriedade `themeColor` 
 - [ ] A Tabela deve ser capaz de receber Células personalizáveis
 - [ ] Deve ser capaz de ordenar por coluna (configurável)
-- [ ] Quando configurado propriedade `fetchData`, deve ser capaz de requisitar informações do backend com paginação automática.
+- [ ] Quando configurado propriedade `fetchData`, deve ser capaz de requisitar informações do backend com paginação automática. (simular Promises de requisição com dados mocados)
   - `{{url}}/paginate?page=1&pageSize=20`
 
 ---
