@@ -1,18 +1,36 @@
-# Projeto de teste
-Este é apenas um projeto de teste que se aproxima do ambiente real de frontend utilizado atualmente.
+# Projeto de teste para vaga Frontend
 
 ## Instruções
 
-O DEV deverá criar um `fork` deste projeto, e desenvolver em cima do seu fork. 
+Você deverá criar um `fork` deste projeto, e desenvolver em cima do seu fork. 
 Use um documento `*.md` no repositório para informar as decisões tomadas, como você organizou e separou seu código, e principalmente as instruções de como executar seu projeto.
 
-- O desenvolvedor está livre para modificar absolutamente quaquer coisa que julgar necessário. 
-- Não é obrigatório para o teste completar todas as tarefas, pode ser feito em partes *(se quiser, é claro)*.
-- É importante fazer um relatório simples em `*.md` do que foi feito, e o tempo utilizado.
+Ao final, o DEV deverá enviar uma PR (`Pull Request`) para ser revisada.
 
-## Objetivo
+### Projeto
 
-Os principais objetivos deste teste é avaliar as seguintes caracteristicas:
+Você deverá escrever uma aplicação para gerenciamento de tarefas. É uma aplicação simples, onde será possível listar, cadastrar, editar e excluir tarefas.
+
+Cada tarefa deve conter um rótulo obrigatório, uma descrição opcional e datas de criação/alteração, e por fim um "check" para determinar se a tarefa foi concluída.
+
+- [ ] Deve haver uma tela principal com a lista de tarefas
+- [ ] Deve uma forma de adicionar / editar e excluir as tarefas
+
+> O desenvolvedor está livre criar e a aproveitar para mostrar suas habilidades.
+
+### Exigênicas
+
+1. O projeto deve utilizar `React`
+2. Deve ser escrito com `typescript`
+3. Os commits podem ser escritos em português, porém deverão seguir o padrão convencional do [commitlint](https://commitlint.js.org/#/)
+4. O projeto deve seguir a estrutura e fluxo de trabalho do [git flow](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow)
+5. Toda parte de código e nomeação de funções/variáveis devem ser em inglês.
+6. Nomeação de funções/variáveis devem seguir a convenção de [camelCase](https://coodesh.com/blog/dicionario/o-que-e-camelcase/)
+
+
+### Objetivo do teste
+
+Os principais pontos a serem considerados nesse teste são:
 
 - Nível de organização das etapas de desenvolvimento (tomada de decisões em features / ordem dos commits)
 - Facilidade para a reprodução do ambiente por outros DEV's do time
@@ -20,74 +38,66 @@ Os principais objetivos deste teste é avaliar as seguintes caracteristicas:
 - Noções de responsividade
 - Escalabilidade (componentização e organização da estrutura de arquivos do projeto)
 - Capacidade de resolução de problemas
-- Nível de intimidade com o fluxo do `React`
+- Nível de conhecimento do `React`
+- Comunicação
 
 ---
-## Tarefas possíveis para o Teste 
-
-> As tarefas estão em ordem de complexidade
+## Características desejáveis para o projeto 
 
 ### 1. Ambiente de desenvolvimento
 
-- [ ] Configurar projeto para rodar com `typescript`
-- [ ] Atualizar dependências que não prejudiquem o funcionamento do projeto
-- [ ] Configurar, iniciar e utilizar o projeto com `git flow` (conceitos básicos)
-- [ ] Reorganizar estrutura de pastas do projeto, apenas se achar necesário
-- [ ] Configuração padronização de código `eslint`
+- Pode utilizar [create react-app](https://create-react-app.dev/)
+- Configurar projeto para rodar com `typescript`
+- Configurar, iniciar e utilizar o projeto com `git flow` (conceitos básicos)
+- Configuração padronização de código `eslint` / `prettier`
 
---- 
 
 ### 2. Estilização
-Fique à vontade para utilizar a biblioteca de estilização favorita (damos preferência para `styled-components`)
-- [ ] Reproduzir um componente bootstrap SASS/SCSS do Tema por biblioteca de estilização javascript de sua escolha
+Mostre suas habilidades com estilização, organização e escalabilidade de componetes e páginas.
+
+- Fique à vontade para utilizar Bootstrap, MaterialUi, Chakra UI, Tailwind, CSS. *(por aqui utilizamos `styled-components`)*
 
 
-### 3. Criar hooks
+### 3. React Hooks
+Mostre suas habilidades com o fluxo de renderização do `React`. Voce pode trabalhar hooks, contexts, etc.
 
-- [ ] Criar hook para troca de Tema da aplicação
-- [ ] Requisitar um Tema para o servidor backend (utilize simulação de Promises com mocks);
-
----
+- Criar hook para troca de informções globais da aplicação
 
 ### 4. Redux
 > dica: pode utilizar a lib `@reduxjs/toolkit` para facilitar o processo
 
-- [ ] Configurar store do `redux` para aplicação
-- [ ] Salvar informações de *Tema e/ou qualquer outra informação* em um estado global do `react-redux`
-
+- Configurar store do `redux` para aplicação
+- Salvar informações em um estado global do `react-redux`
 
 ### 5. Persistindo estados globais
 > dica: aqui utilizamos o `redux-persist`
 
-- [ ] Salvar informações de *Tema e/ou qualquer outra informação* no storage do navegador
+- Salvar informações de no storage do navegador
 
----
+### 6. Entrega
+Organização sempre é bem-vinda. Por isso, sinta-se a vontade para registrar a tarefa que está trabalhando, tempo previsto e tempo trabalhado, como no modelo abaixo:
 
-### 6. Componentizar tabela
-A tabela componentizada deve prosseguir com a aparência da tabela do próprio Tema, podendo aproveitar as classes de tabela e outros componentes do bootstrap.
-
-#### Motivação
-Serão utilizadas muitas tabelas de dados no sistema, então para: 
-- Evitar código prolixo;
-- Evitar códigos clichês de tabelas HTML;
-- Minimizar erros;
-- Facilitar a manutenção;
-
-#### Requerimentos
-- [ ] A Tabela deve receber um Tema como propriedade `themeColor` 
-- [ ] A Tabela deve ser capaz de receber Células personalizáveis
-- [ ] Deve ser capaz de ordenar por coluna (configurável)
-- [ ] Quando configurado propriedade `fetchData`, deve ser capaz de requisitar informações do backend com paginação automática. (simular Promises de requisição com dados mocados)
-  - `{{url}}/paginate?page=1&pageSize=20`
+|Tarefa|Previsto|Trabalhado|
+|:--|:--:|:--:|
+|Exemplo de tarefa 1| ~1h | 1h 10m |
+|Mais outro exemplo de tarefa| 2h | 1h 50m |
 
 ---
 
 ## Importante
 
-Sabemos que o [Argon Dashboard React](https://www.creative-tim.com/product/argon-dashboard-react) está longe de ser ideal para utilizar como template de projetos react. Porém, nosso frontend foi pensado e elaborado a partir do design desse template.
-Você está livre para sugerir alterações na estrutura e nas abordagens do projeto. 
-Reforçando: 
-- O seu objetivo **NÃO É** fazer melhorias no template da Argon, e sim mostrar suas habilidades na resolução de problemas em ambiente real, de forma eficiênte, e principalmente, que seja compreendida pelo **time**.
+Você está livre para criar/incrementar à estrutura e abordagem do projeto.
+
+O seu objetivo é mostrar suas habilidades na resolução de problemas em ambiente real, de forma eficiênte, e principalmente, que seja compreendida pelo **time**.
+
+Não é necessário executar todas as [caracteristicas desejáveis](#características-desejáveis-para-o-projeto), faça aquilo que se sentir confortável.
+
+Lembre-se que sua comunicação também está sendo avaliada, portanto, se tiver dúvidas comunique.
+
+---
+*Leandro Sbrissa*
+email: leandro@cisassessment.com.br
+whatsapp: *infomre-se sobre meu numero*
 
 
 
