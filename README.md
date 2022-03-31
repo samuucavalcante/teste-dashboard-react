@@ -46,7 +46,7 @@ Os principais pontos a serem considerados nesse teste são:
 
 ### 1. Ambiente de desenvolvimento
 
-- Pode utilizar [create react-app](https://create-react-app.dev/)
+- Pode utilizar [create react-app](https://create-react-app.dev/), [create vite](https://vitejs.dev/), etc.
 - Configurar projeto para rodar com `typescript`
 - Configurar, iniciar e utilizar o projeto com `git flow` (conceitos básicos)
 - Configuração padronização de código `eslint` / `prettier`
