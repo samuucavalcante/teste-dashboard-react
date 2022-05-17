@@ -15,45 +15,60 @@ import {
 } from '@chakra-ui/react'
 import { useTodo } from 'hooks/useTodo'
 import dynamic from 'next/dynamic'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   ssr: false
 })
-type ModalAddTodoProps = ModalProps
 
-export default function ModalAddTodo({ onClose, ...rest }: ModalAddTodoProps) {
-  const { addTodo } = useTodo()
+interface ModalAddTodoProps extends ModalProps {
+  todo: {
+    id: string
+    title: string
+    description: string
+    createdAt: Date
+    done: boolean
+  }
+}
+
+export default function ModalEditTodo({ todo, ...rest }: ModalAddTodoProps) {
+  const { updateTodo } = useTodo()
   const toast = useToast()
-  const inputTitleRef = useRef<HTMLInputElement>(null)
-  const [inputDescription, setInputDescription] = useState('')
+
+  const [inputTitle, setInputTitle] = useState(todo.title)
+
+  const [inputDescription, setInputDescription] = useState(todo.description)
 
   const handleSubmit = () => {
-    addTodo({
-      title: inputTitleRef.current!.value,
+    updateTodo(todo.id, {
+      title: inputTitle,
       description: inputDescription
     })
 
     toast({
-      title: 'Tarefa adicionada com sucesso!',
+      title: 'Todo Atualizado com sucesso!',
       description: '',
       status: 'success'
     })
 
-    inputTitleRef.current!.value = ''
-    setInputDescription('')
-
-    onClose()
+    rest.onClose()
   }
 
   return (
-    <Modal onClose={onClose} {...rest}>
+    <Modal {...rest}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Novo Todo</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <VStack spacing={2}>
-            <Input ref={inputTitleRef} placeholder="Título" />
+            <Input
+              value={inputTitle}
+              onChange={(value: React.FormEvent<HTMLInputElement>) =>
+                setInputTitle(value.currentTarget.value)
+              }
+              placeholder="Título"
+            />
             <Box w="100%" h="200px">
               <QuillNoSSRWrapper
                 value={inputDescription}

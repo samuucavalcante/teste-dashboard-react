@@ -83,7 +83,7 @@ const Index = () => {
               isDone={todo.done}
               createdAt={todo.createdAt}
               key={todo.id}
-              title={todo.text}
+              title={todo.title}
               description={todo.description}
               borderRadius="md"
               p={4}

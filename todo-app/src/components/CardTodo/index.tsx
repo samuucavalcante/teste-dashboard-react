@@ -9,12 +9,15 @@ import {
   HStack,
   IconButton,
   Text,
-  useToast
+  useDisclosure,
+  useToast,
+  VisuallyHidden
 } from '@chakra-ui/react'
 import React, { useCallback, useEffect } from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import parse from 'html-react-parser'
 import { useTodo } from 'hooks/useTodo'
+import ModalEditTodo from 'components/ModalEditTodo'
 
 interface CardTodoProps extends BoxProps {
   id: string
@@ -32,6 +35,7 @@ export default function CardTodo({
   isDone,
   ...rest
 }: CardTodoProps) {
+  const { isOpen, onClose, onOpen } = useDisclosure()
   const toast = useToast()
   const { deleteTodo } = useTodo()
 
@@ -75,8 +79,16 @@ export default function CardTodo({
             variant="link"
             aria-label="Edit Todo"
             colorScheme="yellow"
+            onClick={onOpen}
             icon={<AiFillEdit size={18} />}
           />
+          <ModalEditTodo
+            isOpen={isOpen}
+            onClose={onClose}
+            todo={{ id, title, description, done: isDone, createdAt }}
+          >
+            <VisuallyHidden />
+          </ModalEditTodo>
           <IconButton
             size="sm"
             variant="link"

@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useState } from 'react'
 
-interface Todo {
+export interface Todo {
   id: string
-  text: string
+  title: string
   description: string
   done: boolean
   createdAt: Date
@@ -10,8 +10,9 @@ interface Todo {
 
 interface TodoContextData {
   todos: Todo[]
-  addTodo: (todo: Pick<Todo, 'text' | 'description'>) => void
+  addTodo: (todo: Pick<Todo, 'title' | 'description'>) => void
   deleteTodo: (id: string) => void
+  updateTodo: (id: string, todo: Pick<Todo, 'title' | 'description'>) => void
 }
 
 const TodoContext = createContext<TodoContextData>({} as TodoContextData)
@@ -20,10 +21,10 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<Todo[]>([])
 
   const addTodo = useCallback(
-    ({ text, description }: Pick<Todo, 'text' | 'description'>) => {
+    ({ title, description }: Pick<Todo, 'title' | 'description'>) => {
       const todo: Todo = {
         id: crypto.randomUUID(),
-        text,
+        title,
         description,
         done: false,
         createdAt: new Date()
@@ -40,8 +41,29 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     setData(newData)
   }, [])
 
+  const updateTodo = (
+    id: string,
+    { title, description }: Pick<Todo, 'description' | 'title'>
+  ) => {
+    const newData = data.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          title,
+          description
+        }
+      }
+
+      return todo
+    })
+
+    setData(newData)
+  }
+
   return (
-    <TodoContext.Provider value={{ todos: data, addTodo, deleteTodo }}>
+    <TodoContext.Provider
+      value={{ todos: data, addTodo, deleteTodo, updateTodo }}
+    >
       {children}
     </TodoContext.Provider>
   )
