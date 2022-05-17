@@ -1,6 +1,4 @@
-import { theme } from '@chakra-ui/react'
-
-const primary = theme.colors.teal
+const primary = '#3DA9FC'
 
 export default {
   primary
