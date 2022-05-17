@@ -5,12 +5,15 @@
 - Adicionei as cores da aplicação no estado global do chakra.
 ### Gerenciamento de tarefas
 - [x] Explorar projetos parecidos para se inspirar.
-- [ ] Criação & Organização do layout
-- [ ] Botão de criação de tarefa
-- [ ] Modal de criação de tarefa
-- [ ] Modal de criação de tarefa
+- [x] Criação & Organização do layout
+- [x] Botão de criação de tarefa
+- [x] Modal de criação de tarefa
 - [x] Organização da lista de TODO no layout
 - [ ] Organização de visualização do TODO no layout
+- [ ] Criação de Contexto para ter acesso global dos Todos
+- [ ] Armazenato no LocalStorage
+- [ ] Funcionalidade de Busca de Todo
+- [ ] Funcionalidade de Filtro de Todo
 
 
 
