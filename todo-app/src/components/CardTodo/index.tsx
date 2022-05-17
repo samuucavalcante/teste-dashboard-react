@@ -8,13 +8,19 @@ import {
   Heading,
   HStack,
   IconButton,
-  Text
+  Text,
+  useDisclosure,
+  useToast,
+  VisuallyHidden
 } from '@chakra-ui/react'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import parse from 'html-react-parser'
+import { useTodo } from 'hooks/useTodo'
+import ModalEditTodo from 'components/ModalEditTodo'
 
 interface CardTodoProps extends BoxProps {
+  id: string
   title: string
   description: string
   createdAt: Date
@@ -22,12 +28,17 @@ interface CardTodoProps extends BoxProps {
 }
 
 export default function CardTodo({
+  id,
   title,
   description,
   createdAt,
   isDone,
   ...rest
 }: CardTodoProps) {
+  const { isOpen, onClose, onOpen } = useDisclosure()
+  const toast = useToast()
+  const { deleteTodo } = useTodo()
+
   const createdAtFormated = new Intl.DateTimeFormat('pt-BR', {
     dateStyle: 'medium',
     timeStyle: 'medium'
@@ -46,6 +57,14 @@ export default function CardTodo({
     )
   }
 
+  const handleDeleteTodo = useCallback(() => {
+    deleteTodo(id)
+    toast({
+      title: 'Todo deletado com sucesso!',
+      status: 'success'
+    })
+  }, [])
+
   return (
     <Box {...rest}>
       <Flex justifyContent="space-between">
@@ -60,13 +79,22 @@ export default function CardTodo({
             variant="link"
             aria-label="Edit Todo"
             colorScheme="yellow"
+            onClick={onOpen}
             icon={<AiFillEdit size={18} />}
           />
+          <ModalEditTodo
+            isOpen={isOpen}
+            onClose={onClose}
+            todo={{ id, title, description, done: isDone, createdAt }}
+          >
+            <VisuallyHidden />
+          </ModalEditTodo>
           <IconButton
             size="sm"
             variant="link"
             aria-label="Edit Todo"
             colorScheme="red"
+            onClick={handleDeleteTodo}
             icon={<AiFillDelete size={18} />}
           />
         </HStack>
