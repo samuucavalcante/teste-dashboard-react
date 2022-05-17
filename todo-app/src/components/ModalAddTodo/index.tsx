@@ -10,15 +10,38 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalProps,
+  useToast,
   VStack
 } from '@chakra-ui/react'
+import { useTodo } from 'hooks/useTodo'
 import dynamic from 'next/dynamic'
+import { useRef, useState } from 'react'
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   ssr: false
 })
 type ModalAddTodoProps = ModalProps
 
 export default function ModalAddTodo(props: ModalAddTodoProps) {
+  const { addTodo } = useTodo()
+  const toast = useToast()
+  const inputTitleRef = useRef<HTMLInputElement>(null)
+  const [inputDescription, setInputDescription] = useState('')
+
+  const handleSubmit = () => {
+    addTodo({
+      text: inputTitleRef.current!.value,
+      description: inputDescription
+    })
+    toast({
+      title: 'Tarefa adicionada com sucesso!',
+      description: '',
+      status: 'success'
+    })
+    inputTitleRef.current!.value = ''
+    setInputDescription('')
+    props.onClose()
+  }
+
   return (
     <Modal {...props}>
       <ModalOverlay />
@@ -27,15 +50,21 @@ export default function ModalAddTodo(props: ModalAddTodoProps) {
         <ModalCloseButton />
         <ModalBody>
           <VStack spacing={2}>
-            <Input placeholder="Título" />
+            <Input ref={inputTitleRef} placeholder="Título" />
             <Box w="100%" h="200px">
-              <QuillNoSSRWrapper style={{ height: 150 }} />
+              <QuillNoSSRWrapper
+                value={inputDescription}
+                onChange={setInputDescription}
+                style={{ height: 150 }}
+              />
             </Box>
           </VStack>
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue">Criar</Button>
+          <Button onClick={handleSubmit} colorScheme="blue">
+            Criar
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

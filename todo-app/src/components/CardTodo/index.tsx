@@ -10,20 +10,48 @@ import {
   IconButton,
   Text
 } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
+import parse from 'html-react-parser'
 
-type CardTodoProps = BoxProps
+interface CardTodoProps extends BoxProps {
+  title: string
+  description: string
+  createdAt: Date
+  isDone: boolean
+}
 
-export default function CardTodo(props: CardTodoProps) {
+export default function CardTodo({
+  title,
+  description,
+  createdAt,
+  isDone,
+  ...rest
+}: CardTodoProps) {
+  const createdAtFormated = new Intl.DateTimeFormat('pt-BR', {
+    dateStyle: 'medium',
+    timeStyle: 'medium'
+  }).format(createdAt)
+
+  const tagFormat = {
+    [1]: (
+      <Badge variant="solid" colorScheme="green">
+        Concluido
+      </Badge>
+    ),
+    [0]: (
+      <Badge variant="solid" colorScheme="gray">
+        Pendente
+      </Badge>
+    )
+  }
+
   return (
-    <Box {...props}>
+    <Box {...rest}>
       <Flex justifyContent="space-between">
         <Box>
           <Heading color="blackAlpha.800" fontSize="2xl">
-            Title{' '}
-            <Badge variant="solid" colorScheme="green">
-              Concluido
-            </Badge>
+            {title} {tagFormat[isDone ? 1 : 0]}
           </Heading>
         </Box>
         <HStack>
@@ -44,16 +72,11 @@ export default function CardTodo(props: CardTodoProps) {
         </HStack>
       </Flex>
       <Text fontSize="smaller" color="#8e8e8e" as="span">
-        criado em 17/05/2022 ás 13:52
+        {createdAtFormated}
       </Text>
       <Box mt={4}>
-        <Text noOfLines={4} fontSize="sm" color="gray.500">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
-          blanditiis ab molestiae, corporis debitis eum. Id praesentium
-          exercitationem numquam beatae architecto debitis sunt culpa earum
-          cumque ratione. Itaque omnis sunt placeat veritatis ad culpa aliquid,
-          aspernatur molestias at necessitatibus maiores. Cupiditate saepe
-          delectus sed ipsa neque. Incidunt quasi quo obcaecati.
+        <Text id="description" noOfLines={4} fontSize="sm" color="gray.500">
+          {parse(description)}
         </Text>
       </Box>
 

@@ -11,11 +11,13 @@ import {
   VStack
 } from '@chakra-ui/react'
 import CardTodo from 'components/CardTodo'
-import ModalAddTodo from 'components/ModalAddTodo'
+import ModalAddTodo from '../components/ModalAddTodo'
 import { AiFillPlusCircle } from 'react-icons/ai'
+import { useTodo } from 'hooks/useTodo'
 
 const Index = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { todos } = useTodo()
 
   return (
     <Box w="100%">
@@ -74,16 +76,21 @@ const Index = () => {
               <VisuallyHidden />
             </ModalAddTodo>
           </Flex>
-
-          <CardTodo
-            borderRadius="md"
-            p={4}
-            minW="350px"
-            mt={2}
-            ml={2}
-            w={['100%', '100%', '50%', '32%']}
-            boxShadow="xl"
-          />
+          {todos.map((todo) => (
+            <CardTodo
+              createdAt={todo.createdAt}
+              key={todo.id}
+              title={todo.text}
+              description={todo.description}
+              borderRadius="md"
+              p={4}
+              minW="350px"
+              mt={2}
+              ml={2}
+              w={['100%', '100%', '50%', '32%']}
+              boxShadow="xl"
+            />
+          ))}
         </Flex>
       </Flex>
     </Box>
