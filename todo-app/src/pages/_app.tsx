@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
+import 'react-quill/dist/quill.snow.css'
 
 import theme from 'theme'
 

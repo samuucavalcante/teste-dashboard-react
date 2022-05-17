@@ -6,12 +6,17 @@ import {
   Heading,
   IconButton,
   Input,
+  useDisclosure,
+  VisuallyHidden,
   VStack
 } from '@chakra-ui/react'
 import CardTodo from 'components/CardTodo'
+import ModalAddTodo from 'components/ModalAddTodo'
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 const Index = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <Box w="100%">
       {/* Header */}
@@ -56,12 +61,18 @@ const Index = () => {
             _hover={{
               bgColor: 'gray.200'
             }}
+            onClick={onOpen}
           >
             <IconButton
               aria-label="Add Todo"
               variant="unstyled"
               icon={<AiFillPlusCircle color="black" size={30} />}
             ></IconButton>
+
+            {/* Modal That Add Todo */}
+            <ModalAddTodo isOpen={isOpen} onClose={onClose}>
+              <VisuallyHidden />
+            </ModalAddTodo>
           </Flex>
 
           <CardTodo
