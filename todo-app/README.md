@@ -11,7 +11,9 @@
 - [x] Organização da lista de TODO no layout
 - [x] Organização de visualização do TODO no layout
 - [x] Criação de Contexto para ter acesso global dos Todos
-- [ ] Armazenato no LocalStorage
+- [x] Delete todo
+- [x] Edit todo
+- [ ] Armazenamento no LocalStorage
 - [ ] Funcionalidade de Busca de Todo
 - [ ] Funcionalidade de Filtro de Todo
 
