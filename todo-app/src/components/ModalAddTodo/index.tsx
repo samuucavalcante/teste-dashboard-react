@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Input,
-  InputGroup,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -11,7 +10,6 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalProps,
-  Textarea,
   VStack
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
