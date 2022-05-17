@@ -4,7 +4,7 @@
 - Chakra UI - Uma biblioteca que tenho bastante familiaridade, com isso, ganho produtividade.
 
 ### Gerenciamento de tarefas
-- [  ] Criação do layout
+- [  ] Criação & Organização do layout
 - [  ] Botão de criação de tarefa
 - [  ] Modal de criação de tarefa
 - [  ] Modal de criação de tarefa
@@ -16,7 +16,7 @@
 ### Gerenciamento de tempo
 |Tarefa|Previsto|Trabalhado|
 |:--|:--:|:--:|
-|Crianção do layout| 20m | x |
+|Criação & Organização do layout | 20m | x |
 |Botão de criação de tarefa| 8m | x |
 |Modal de criação de tarefa| 20m | x |
 |Modal de edição de tarefa| 20m | x |
