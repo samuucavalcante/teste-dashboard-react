@@ -5,7 +5,7 @@
 Você deverá criar um `fork` deste projeto, e desenvolver em cima do seu fork. 
 Use um documento `*.md` no repositório para informar as decisões tomadas, como você organizou e separou seu código, e principalmente as instruções de como executar seu projeto.
 
-Ao final, o DEV deverá enviar uma PR (`Pull Request`) para ser revisada.
+<s>Ao final, o DEV deverá enviar uma PR (`Pull Request`) para ser revisada.</s>
 
 ### Projeto
 
