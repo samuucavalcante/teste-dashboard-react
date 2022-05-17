@@ -11,14 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AppProvider>
       <ChakraProvider resetCSS theme={theme}>
         <Head>
-          <title>NextJS with Chakra-ui Boilerplate</title>
+          <title>Todo App</title>
           <link rel="shortcut icon" href="/img/chakra-logo.png" />
           <link rel="apple-touch-icon" href="/img/chakra-logo.png" />
           <link rel="manifest" href="/manifest.json" />
-          <meta
-            name="description"
-            content="NextJS with Chakra-ui Boilerplate"
-          />
+          <meta name="Todo App" content="Todo App" />
         </Head>
 
         <Component {...pageProps} />
