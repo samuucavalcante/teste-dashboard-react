@@ -78,6 +78,7 @@ const Index = () => {
           </Flex>
           {todos.map((todo) => (
             <CardTodo
+              isDone={todo.done}
               createdAt={todo.createdAt}
               key={todo.id}
               title={todo.text}
