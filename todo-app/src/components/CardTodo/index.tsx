@@ -3,7 +3,6 @@ import {
   Box,
   BoxProps,
   Button,
-  Center,
   Checkbox,
   Flex,
   Heading,
