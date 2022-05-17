@@ -8,13 +8,16 @@ import {
   Heading,
   HStack,
   IconButton,
-  Text
+  Text,
+  useToast
 } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import parse from 'html-react-parser'
+import { useTodo } from 'hooks/useTodo'
 
 interface CardTodoProps extends BoxProps {
+  id: string
   title: string
   description: string
   createdAt: Date
@@ -22,12 +25,16 @@ interface CardTodoProps extends BoxProps {
 }
 
 export default function CardTodo({
+  id,
   title,
   description,
   createdAt,
   isDone,
   ...rest
 }: CardTodoProps) {
+  const toast = useToast()
+  const { deleteTodo } = useTodo()
+
   const createdAtFormated = new Intl.DateTimeFormat('pt-BR', {
     dateStyle: 'medium',
     timeStyle: 'medium'
@@ -45,6 +52,14 @@ export default function CardTodo({
       </Badge>
     )
   }
+
+  const handleDeleteTodo = useCallback(() => {
+    deleteTodo(id)
+    toast({
+      title: 'Todo deletado com sucesso!',
+      status: 'success'
+    })
+  }, [])
 
   return (
     <Box {...rest}>
@@ -67,6 +82,7 @@ export default function CardTodo({
             variant="link"
             aria-label="Edit Todo"
             colorScheme="red"
+            onClick={handleDeleteTodo}
             icon={<AiFillDelete size={18} />}
           />
         </HStack>

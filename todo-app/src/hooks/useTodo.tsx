@@ -28,17 +28,17 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
         done: false,
         createdAt: new Date()
       }
-      console.log({
-        todo,
-        data
-      })
 
       setData((state) => [...state, todo])
     },
     []
   )
 
-  const deleteTodo = useCallback((id: string) => {}, [])
+  const deleteTodo = useCallback((id: string) => {
+    const newData = data.filter((todo) => todo.id !== id)
+
+    setData(newData)
+  }, [])
 
   return (
     <TodoContext.Provider value={{ todos: data, addTodo, deleteTodo }}>

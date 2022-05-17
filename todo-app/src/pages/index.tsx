@@ -60,6 +60,7 @@ const Index = () => {
             minW="350px"
             mt={2}
             ml={2}
+            minH={200}
             _hover={{
               bgColor: 'gray.200'
             }}
@@ -78,6 +79,7 @@ const Index = () => {
           </Flex>
           {todos.map((todo) => (
             <CardTodo
+              id={todo.id}
               isDone={todo.done}
               createdAt={todo.createdAt}
               key={todo.id}
