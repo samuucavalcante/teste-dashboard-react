@@ -10,7 +10,7 @@ import {
   IconButton,
   Text
 } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import parse from 'html-react-parser'
 
