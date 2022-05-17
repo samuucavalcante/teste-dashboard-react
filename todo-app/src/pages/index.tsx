@@ -4,10 +4,12 @@ import {
   Center,
   Flex,
   Heading,
+  IconButton,
   Input,
   VStack
 } from '@chakra-ui/react'
 import CardTodo from 'components/CardTodo'
+import { AiFillPlusCircle } from 'react-icons/ai'
 
 const Index = () => {
   return (
@@ -40,6 +42,28 @@ const Index = () => {
       {/* Todo Cards */}
       <Flex w="100%" alignItems="center" justifyContent="center">
         <Flex flexWrap="wrap" w="100%">
+          <Flex
+            cursor="pointer"
+            justifyContent="center"
+            alignItems="center"
+            boxShadow="xl"
+            w={['100%', '100%', '50%', '32%']}
+            borderRadius="md"
+            p={4}
+            minW="350px"
+            mt={2}
+            ml={2}
+            _hover={{
+              bgColor: 'gray.200'
+            }}
+          >
+            <IconButton
+              aria-label="Add Todo"
+              variant="unstyled"
+              icon={<AiFillPlusCircle color="black" size={30} />}
+            ></IconButton>
+          </Flex>
+
           <CardTodo
             borderRadius="md"
             p={4}
