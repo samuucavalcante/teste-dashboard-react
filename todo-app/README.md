@@ -4,13 +4,13 @@
 - Chakra UI - Uma biblioteca que tenho bastante familiaridade, com isso, ganho produtividade.
 - Adicionei as cores da aplicação no estado global do chakra.
 ### Gerenciamento de tarefas
-- [  ] Explorar projetos parecidos para se inspirar.
-- [  ] Criação & Organização do layout
-- [  ] Botão de criação de tarefa
-- [  ] Modal de criação de tarefa
-- [  ] Modal de criação de tarefa
-- [  ] Organização da lista de TODO no layout
-- [  ] Organização de visualização do TODO no layout
+- [x] Explorar projetos parecidos para se inspirar.
+- [ ] Criação & Organização do layout
+- [ ] Botão de criação de tarefa
+- [ ] Modal de criação de tarefa
+- [ ] Modal de criação de tarefa
+- [x] Organização da lista de TODO no layout
+- [ ] Organização de visualização do TODO no layout
 
 
 
