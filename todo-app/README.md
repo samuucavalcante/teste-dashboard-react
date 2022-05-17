@@ -6,13 +6,14 @@
 ### Gerenciamento de tarefas
 - [x] Explorar projetos parecidos para se inspirar.
 - [x] Criação & Organização do layout
-- [x] Botão de criação de tarefa
-- [x] Modal de criação de tarefa
+- [x] Botão de criação de todo
+- [x] Modal de criação de todo
 - [x] Organização da lista de TODO no layout
 - [x] Organização de visualização do TODO no layout
 - [x] Criação de Contexto para ter acesso global dos Todos
 - [x] Delete todo
 - [x] Edit todo
+- [ ] Checkbox todo
 - [ ] Armazenamento no LocalStorage
 - [ ] Funcionalidade de Busca de Todo
 - [ ] Funcionalidade de Filtro de Todo
