@@ -1,9 +1,10 @@
 # Todo App
 ### Setup do Projeto
 - [Boilerplate](https://github.com/Lukazovic/nextjs-with-chakra-ui-boilerplate) NextJS com Chakra UI - Configuração do Chakra UI, Husky, Eslint, Prettier Otimizado.
-- Chakra UI - Uma biblioteca que tenho bastante familiaridade, com isso, ganho produtividade.
+- [Chakra UI](https://github.com/chakra-ui/chakra-ui) - Uma biblioteca que tenho bastante familiaridade, com isso, ganho produtividade.
 - Adicionei as cores da aplicação no estado global do chakra.
-
+- Ultilização de Texto Inteligente na descrição do todo ultilizando a biblioteca [react-quill](https://github.com/zenoamaro/react-quill)
+- Ultilização de icons com a biblioteca [react-icons](https://react-icons.github.io/react-icons)
 ### Como Iniciar o Projeto
 1. <code>git clone https://github.com/samuucavalcante/teste-dashboard-react </code>
 
