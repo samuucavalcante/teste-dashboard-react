@@ -37,7 +37,7 @@ export default function CardTodo({
 }: CardTodoProps) {
   const { isOpen, onClose, onOpen } = useDisclosure()
   const toast = useToast()
-  const { deleteTodo } = useTodo()
+  const { deleteTodo, toggleTodoChecked } = useTodo()
 
   const createdAtFormated = new Intl.DateTimeFormat('pt-BR', {
     dateStyle: 'medium',
@@ -112,7 +112,12 @@ export default function CardTodo({
         <Button variant="outline" colorScheme="blackAlpha">
           Visualizar Terefa
         </Button>
-        <Checkbox ml={4} color="blackAlpha.800" colorScheme="green">
+        <Checkbox
+          onChange={() => toggleTodoChecked(id)}
+          ml={4}
+          color="blackAlpha.800"
+          colorScheme="green"
+        >
           Concluído
         </Checkbox>
       </Box>
