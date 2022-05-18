@@ -13,10 +13,9 @@
 - [x] Criação de Contexto para ter acesso global dos Todos
 - [x] Delete todo
 - [x] Edit todo
-- [ ] Checkbox todo
+- [x] Checkbox todo
 - [ ] Armazenamento no LocalStorage
 - [x] Funcionalidade de Busca de Todo
-- [ ] Funcionalidade de Filtro de Todo
 
 
 
