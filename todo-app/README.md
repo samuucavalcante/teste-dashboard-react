@@ -15,7 +15,7 @@
 - [x] Edit todo
 - [ ] Checkbox todo
 - [ ] Armazenamento no LocalStorage
-- [ ] Funcionalidade de Busca de Todo
+- [x] Funcionalidade de Busca de Todo
 - [ ] Funcionalidade de Filtro de Todo
 
 
