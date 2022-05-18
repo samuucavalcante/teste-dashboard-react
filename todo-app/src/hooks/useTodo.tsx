@@ -13,6 +13,7 @@ interface TodoContextData {
   addTodo: (todo: Pick<Todo, 'title' | 'description'>) => void
   deleteTodo: (id: string) => void
   updateTodo: (id: string, todo: Pick<Todo, 'title' | 'description'>) => void
+  toggleTodoChecked: (id: string) => void
 }
 
 const TodoContext = createContext<TodoContextData>({} as TodoContextData)
@@ -60,9 +61,30 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     setData(newData)
   }
 
+  const toggleTodoChecked = (id: string) => {
+    const newData = data.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          done: !todo.done
+        }
+      }
+
+      return todo
+    })
+
+    setData(newData)
+  }
+
   return (
     <TodoContext.Provider
-      value={{ todos: data, addTodo, deleteTodo, updateTodo }}
+      value={{
+        todos: data,
+        addTodo,
+        deleteTodo,
+        updateTodo,
+        toggleTodoChecked
+      }}
     >
       {children}
     </TodoContext.Provider>
