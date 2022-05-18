@@ -27,7 +27,6 @@ const Index = () => {
     const filteredTodos = todos.filter((todo) =>
       todo.title.toLowerCase().includes(searchInput.toLowerCase())
     )
-    console.log([...filteredTodos])
 
     setTodoFilter(filteredTodos)
   }, [searchInput])
