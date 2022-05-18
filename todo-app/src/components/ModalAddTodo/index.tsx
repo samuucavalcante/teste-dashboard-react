@@ -56,6 +56,7 @@ export default function ModalAddTodo({ onClose, ...rest }: ModalAddTodoProps) {
             <Input ref={inputTitleRef} placeholder="Título" />
             <Box w="100%" h="200px">
               <QuillNoSSRWrapper
+                placeholder="Descrição do Todo..."
                 value={inputDescription}
                 onChange={setInputDescription}
                 style={{ height: 150 }}

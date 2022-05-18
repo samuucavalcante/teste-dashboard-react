@@ -58,7 +58,7 @@ export default function ModalEditTodo({ todo, ...rest }: ModalAddTodoProps) {
     <Modal {...rest}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Novo Todo</ModalHeader>
+        <ModalHeader>Editar todo</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <VStack spacing={2}>
