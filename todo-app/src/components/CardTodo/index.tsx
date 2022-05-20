@@ -8,6 +8,7 @@ import {
   Heading,
   HStack,
   IconButton,
+  Modal,
   Text,
   useDisclosure,
   useToast,
@@ -18,6 +19,7 @@ import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import parse from 'html-react-parser'
 import { useTodo } from 'hooks/useTodo'
 import ModalEditTodo from 'components/ModalEditTodo'
+import ModalViewTodo from 'components/ModalViewTodo'
 
 interface CardTodoProps extends BoxProps {
   id: string
@@ -36,6 +38,11 @@ export default function CardTodo({
   ...rest
 }: CardTodoProps) {
   const { isOpen, onClose, onOpen } = useDisclosure()
+  const {
+    isOpen: isOpenViewTodo,
+    onClose: onCloseViewTodo,
+    onOpen: onOpenViewTodo
+  } = useDisclosure()
   const toast = useToast()
   const { deleteTodo, toggleTodoChecked } = useTodo()
 
@@ -109,9 +116,20 @@ export default function CardTodo({
       </Box>
 
       <Box d="flex" alignItems="center" mt={4} w="100%">
-        <Button variant="outline" colorScheme="blackAlpha">
+        <Button
+          onClick={onOpenViewTodo}
+          variant="outline"
+          colorScheme="blackAlpha"
+        >
           Visualizar Terefa
         </Button>
+        <ModalViewTodo
+          isOpen={isOpenViewTodo}
+          onClose={onCloseViewTodo}
+          todo={{ id, title, description, done: isDone, createdAt }}
+        >
+          <VisuallyHidden />
+        </ModalViewTodo>
         <Checkbox
           defaultChecked={isDone}
           onChange={() => toggleTodoChecked(id)}
