@@ -23,7 +23,7 @@
 - [x] Checkbox todo
 - [x] Funcionalidade de Busca de Todo
 - [ ] Filtrar todo
-- [ ] Armazenar no localStorage
+- [x] Armazenar nos Cookies
 
 
 
