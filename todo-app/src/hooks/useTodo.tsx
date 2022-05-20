@@ -21,26 +21,24 @@ const TodoContext = createContext<TodoContextData>({} as TodoContextData)
 function TodoProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<Todo[]>([])
 
-  const addTodo = useCallback(
-    ({ title, description }: Pick<Todo, 'title' | 'description'>) => {
-      const todo: Todo = {
-        id: crypto.randomUUID(),
-        title,
-        description,
-        done: false,
-        createdAt: new Date()
-      }
+  const addTodo = ({
+    title,
+    description
+  }: Pick<Todo, 'title' | 'description'>) => {
+    const todo: Todo = {
+      id: crypto.randomUUID(),
+      title,
+      description,
+      done: false,
+      createdAt: new Date()
+    }
 
-      setData((state) => [...state, todo])
-    },
-    []
-  )
+    setData((state) => [...state, todo])
+  }
 
-  const deleteTodo = useCallback((id: string) => {
-    const newData = data.filter((todo) => todo.id !== id)
-
-    setData(newData)
-  }, [])
+  const deleteTodo = (id: string) => {
+    setData((state) => state.filter((d) => d.id !== id))
+  }
 
   const updateTodo = (
     id: string,
