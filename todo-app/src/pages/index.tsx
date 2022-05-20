@@ -4,8 +4,10 @@ import {
   Center,
   Flex,
   Heading,
+  HStack,
   IconButton,
   Input,
+  Text,
   useDisclosure,
   VisuallyHidden,
   VStack
@@ -16,6 +18,7 @@ import { AiFillPlusCircle } from 'react-icons/ai'
 import { Todo, useTodo } from 'hooks/useTodo'
 import React, { useEffect, useState } from 'react'
 import { FaSadTear } from 'react-icons/fa'
+import FilterComponent from 'components/FilterComponent'
 
 const Index = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -62,7 +65,11 @@ const Index = () => {
         </VStack>
       </Center>
 
+      <Flex py={4} px={14} justifyContent="flex-end" w="100%">
+        <FilterComponent />
+      </Flex>
       {/* Todo Cards */}
+
       <Flex w="100%" alignItems="center" justifyContent="center">
         <Flex flexWrap="wrap" w="100%">
           {searchInput ? (

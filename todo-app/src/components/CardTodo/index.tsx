@@ -43,6 +43,7 @@ export default function CardTodo({
     onClose: onCloseViewTodo,
     onOpen: onOpenViewTodo
   } = useDisclosure()
+
   const toast = useToast()
   const { deleteTodo, toggleTodoChecked } = useTodo()
 

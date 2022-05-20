@@ -22,10 +22,9 @@
 - [x] Edit todo
 - [x] Checkbox todo
 - [x] Funcionalidade de Busca de Todo
-- [ ] Filtrar todo
 - [x] Armazenar nos Cookies
 - [x] Visualização de todo
-
+- [ ] Filtrar todo
 
 
 ### Gerenciamento de tempo
