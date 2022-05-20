@@ -87,18 +87,22 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
   }
 
   const toggleTodoChecked = (id: string) => {
-    const newData = data.map((todo) => {
+    const cookies = parseCookies()
+    const todos = cookies[COOKIES_KEY_TODOS]
+    const todosToJson = (todos ? JSON.parse(todos) : []) as Todo[]
+    const todoEdited = todosToJson.map((todo) => {
       if (todo.id === id) {
-        return {
-          ...todo,
-          done: !todo.done
-        }
+        return { ...todo, done: !todo.done }
       }
-
       return todo
     })
 
-    setData(newData)
+    setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todoEdited), {
+      maxAge: 1e15,
+      path: '/'
+    })
+
+    setData(todoEdited)
   }
 
   return (

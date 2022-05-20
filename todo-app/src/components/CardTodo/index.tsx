@@ -113,6 +113,7 @@ export default function CardTodo({
           Visualizar Terefa
         </Button>
         <Checkbox
+          defaultChecked={isDone}
           onChange={() => toggleTodoChecked(id)}
           ml={4}
           color="blackAlpha.800"
