@@ -44,19 +44,11 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     id: string,
     { title, description }: Pick<Todo, 'description' | 'title'>
   ) => {
-    const newData = data.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          title,
-          description
-        }
-      }
-
-      return todo
-    })
-
-    setData(newData)
+    setData((state) =>
+      state.map((todo) =>
+        todo.id === id ? { ...todo, title, description } : todo
+      )
+    )
   }
 
   const toggleTodoChecked = (id: string) => {
