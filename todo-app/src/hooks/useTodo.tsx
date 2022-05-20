@@ -1,5 +1,5 @@
-import { createContext, useCallback, useContext, useState } from 'react'
-
+import { createContext, useContext, useState } from 'react'
+import { parseCookies, setCookie } from 'nookies'
 export interface Todo {
   id: string
   title: string
@@ -17,9 +17,18 @@ interface TodoContextData {
 }
 
 const TodoContext = createContext<TodoContextData>({} as TodoContextData)
+const COOKIES_KEY_TODOS = '@todo-app:todos'
 
 function TodoProvider({ children }: { children: React.ReactNode }) {
-  const [data, setData] = useState<Todo[]>([])
+  const [data, setData] = useState<Todo[]>(() => {
+    const cookies = parseCookies()
+    const data = cookies[COOKIES_KEY_TODOS]
+
+    if (data) {
+      return JSON.parse(data)
+    }
+    return [] as Todo[]
+  })
 
   const addTodo = ({
     title,
@@ -32,6 +41,15 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
       done: false,
       createdAt: new Date()
     }
+    const cookies = parseCookies()
+    const todos = cookies[COOKIES_KEY_TODOS]
+    const todosToJson = todos ? JSON.parse(todos) : []
+    todosToJson.push(todo)
+
+    setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todosToJson), {
+      maxAge: 1e15,
+      path: '/'
+    })
 
     setData((state) => [...state, todo])
   }
@@ -44,11 +62,19 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     id: string,
     { title, description }: Pick<Todo, 'description' | 'title'>
   ) => {
-    setData((state) =>
-      state.map((todo) =>
-        todo.id === id ? { ...todo, title, description } : todo
-      )
+    const cookies = parseCookies()
+    const todos = cookies[COOKIES_KEY_TODOS]
+    const todosToJson = (todos ? JSON.parse(todos) : []) as Todo[]
+    const todoEdited = todosToJson.map((todo) =>
+      todo.id === id ? { ...todo, title, description } : todo
     )
+
+    setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todoEdited), {
+      maxAge: 1e15,
+      path: '/'
+    })
+
+    setData(todoEdited)
   }
 
   const toggleTodoChecked = (id: string) => {

@@ -42,7 +42,7 @@ export default function CardTodo({
   const createdAtFormated = new Intl.DateTimeFormat('pt-BR', {
     dateStyle: 'medium',
     timeStyle: 'medium'
-  }).format(createdAt)
+  }).format(new Date(createdAt))
 
   const tagFormat = {
     [1]: (
