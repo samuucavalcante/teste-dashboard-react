@@ -55,7 +55,16 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
   }
 
   const deleteTodo = (id: string) => {
-    setData((state) => state.filter((d) => d.id !== id))
+    const cookies = parseCookies()
+    const todos = cookies[COOKIES_KEY_TODOS]
+    const todosToJson = (todos ? JSON.parse(todos) : []) as Todo[]
+    const todosFiltered = todosToJson.filter((todo) => todo.id !== id)
+
+    setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todosFiltered), {
+      maxAge: 1e15,
+      path: '/'
+    })
+    setData(todosFiltered)
   }
 
   const updateTodo = (
