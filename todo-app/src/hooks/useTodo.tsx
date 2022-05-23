@@ -30,6 +30,14 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     return [] as Todo[]
   })
 
+  const getTodosFromCookies = () => {
+    const cookies = parseCookies()
+    const todos = cookies[COOKIES_KEY_TODOS]
+    const todosToJson = todos ? JSON.parse(todos) : []
+
+    return todosToJson as Todo[]
+  }
+
   const addTodo = ({
     title,
     description
@@ -41,12 +49,10 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
       done: false,
       createdAt: new Date()
     }
-    const cookies = parseCookies()
-    const todos = cookies[COOKIES_KEY_TODOS]
-    const todosToJson = todos ? JSON.parse(todos) : []
-    todosToJson.push(todo)
+    const todos = getTodosFromCookies()
+    todos.push(todo)
 
-    setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todosToJson), {
+    setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todos), {
       maxAge: 1e15,
       path: '/'
     })
@@ -55,10 +61,8 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
   }
 
   const deleteTodo = (id: string) => {
-    const cookies = parseCookies()
-    const todos = cookies[COOKIES_KEY_TODOS]
-    const todosToJson = (todos ? JSON.parse(todos) : []) as Todo[]
-    const todosFiltered = todosToJson.filter((todo) => todo.id !== id)
+    const todos = getTodosFromCookies()
+    const todosFiltered = todos.filter((todo) => todo.id !== id)
 
     setCookie(null, COOKIES_KEY_TODOS, JSON.stringify(todosFiltered), {
       maxAge: 1e15,
@@ -71,10 +75,8 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     id: string,
     { title, description }: Pick<Todo, 'description' | 'title'>
   ) => {
-    const cookies = parseCookies()
-    const todos = cookies[COOKIES_KEY_TODOS]
-    const todosToJson = (todos ? JSON.parse(todos) : []) as Todo[]
-    const todoEdited = todosToJson.map((todo) =>
+    const todos = getTodosFromCookies()
+    const todoEdited = todos.map((todo) =>
       todo.id === id ? { ...todo, title, description } : todo
     )
 
@@ -87,10 +89,8 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
   }
 
   const toggleTodoChecked = (id: string) => {
-    const cookies = parseCookies()
-    const todos = cookies[COOKIES_KEY_TODOS]
-    const todosToJson = (todos ? JSON.parse(todos) : []) as Todo[]
-    const todoEdited = todosToJson.map((todo) => {
+    const todos = getTodosFromCookies()
+    const todoEdited = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, done: !todo.done }
       }
